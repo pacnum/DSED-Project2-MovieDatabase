@@ -17,14 +17,14 @@ namespace DSED_Project2_MovieDatabase
     //Show Moives not returned - Complete
     //Use a Database Class - Complete
     //todo Issue Movies - Issue Complete 
-    //todo Return Movie - 
+    //todo Return Movie - Complete
     //List who are top customers - Complete
     //List what are top movies - Complete
     //todo 2x Unit Tests
     //1 Procedure - ( Check with Gary ) - Not required - Not enough time to learn b4 Project Started ( will be covered at a later date )
     //At least 1 Veiw - Complete
     //Display Database Details on Form - Customer / Movie / Rentals - Complete
-    //Host on GitHub
+    //Host on GitHub - Complete
 
     #endregion
 
@@ -59,6 +59,9 @@ namespace DSED_Project2_MovieDatabase
             txbPlot.Text = string.Empty;
             txbGenre.Text = string.Empty;
             txbRating.Text = string.Empty;
+            txbReturnMovieID.Text = string.Empty;
+            txbMovieID.Text = string.Empty;
+            txbCustID.Text = string.Empty;
 
 
         }
@@ -230,18 +233,18 @@ namespace DSED_Project2_MovieDatabase
 
         private void DGVRentals_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int RMID = 0;
+            string RMID;
             ClearTextBoxes();
 
             try
             {
-                RMID = (int)DGVRentals.Rows[e.RowIndex].Cells[0].Value;
+                RMID = DGVRentals.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txbFirstName.Text = DGVRentals.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txbSurname.Text = DGVRentals.Rows[e.RowIndex].Cells[2].Value.ToString();
                 txbAddress.Text = DGVRentals.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txbTitle.Text = DGVRentals.Rows[e.RowIndex].Cells[4].Value.ToString();
                 txbIssuedDate.Text = DGVRentals.Rows[e.RowIndex].Cells[6].Value.ToString();
-
+                txbReturnMovieID.Text = RMID;
             }
             catch (Exception)
             {
@@ -261,16 +264,45 @@ namespace DSED_Project2_MovieDatabase
         {
             myDatabase.IssueMovie(txbMovieID.Text, txbCustID.Text);
             MessageBox.Show("Movie Issued Succesfully");
+            LoadDB();
         }
         #endregion
 
+        #region Return Movie
         private void BTNReturnMovie_Click(object sender, EventArgs e)
         {
-            myDatabase.ReturnMovie(txbMovieID.Text);
+            
+            myDatabase.ReturnMovie(txbReturnMovieID.Text);
             MessageBox.Show("Movie Returned Successfully");
             LoadDB();
 
         }
+
+        #endregion
+
+        #region Update Customer Details
+
+        private void BTNAddCustomer_Click(object sender, EventArgs e)
+        {
+            myDatabase.InsertOrUpdateOwner(txbFirstName.Text, txbSurname.Text, txbAddress.Text, txbPhoneNumber.Text, "","Add");
+            MessageBox.Show("Customer Add Successful");
+            LoadDB();
+        }
+
+        private void BTNUpdateCustomer_Click(object sender, EventArgs e)
+        {
+            myDatabase.InsertOrUpdateOwner(txbFirstName.Text, txbSurname.Text, txbAddress.Text, txbPhoneNumber.Text, txbCustID.Text, "Update");
+            MessageBox.Show("Customer Update Successful");
+            LoadDB();
+        }
+
+        private void BTNDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            myDatabase.DeleteCustomer(txbCustID.Text);
+            MessageBox.Show("Customer Deleteion Successful");
+            LoadDB();
+        }
+        #endregion
     }
 
 

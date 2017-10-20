@@ -65,6 +65,10 @@
             this.LBLCustomerDetails = new System.Windows.Forms.Label();
             this.txbCustID = new System.Windows.Forms.TextBox();
             this.txbMovieID = new System.Windows.Forms.TextBox();
+            this.txbReturnMovieID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).BeginInit();
@@ -178,7 +182,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(862, 378);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Top 10 Movies and Customers";
+            this.tabPage4.Text = "Top 10 Movies and Customers - Read Only";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -203,6 +207,7 @@
             // 
             this.DGVTopMovies.Location = new System.Drawing.Point(466, 41);
             this.DGVTopMovies.Name = "DGVTopMovies";
+            this.DGVTopMovies.ReadOnly = true;
             this.DGVTopMovies.RowTemplate.Height = 24;
             this.DGVTopMovies.Size = new System.Drawing.Size(375, 319);
             this.DGVTopMovies.TabIndex = 3;
@@ -211,6 +216,7 @@
             // 
             this.DGVTopCustomers.Location = new System.Drawing.Point(40, 41);
             this.DGVTopCustomers.Name = "DGVTopCustomers";
+            this.DGVTopCustomers.ReadOnly = true;
             this.DGVTopCustomers.RowTemplate.Height = 24;
             this.DGVTopCustomers.Size = new System.Drawing.Size(375, 319);
             this.DGVTopCustomers.TabIndex = 2;
@@ -223,7 +229,7 @@
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(862, 378);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Movies Not Returned";
+            this.tabPage5.Text = "Movies Not Returned - Read Only";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // DGVNotReturned
@@ -232,6 +238,7 @@
             this.DGVNotReturned.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVNotReturned.Location = new System.Drawing.Point(3, 3);
             this.DGVNotReturned.Name = "DGVNotReturned";
+            this.DGVNotReturned.ReadOnly = true;
             this.DGVNotReturned.RowTemplate.Height = 24;
             this.DGVNotReturned.Size = new System.Drawing.Size(856, 372);
             this.DGVNotReturned.TabIndex = 0;
@@ -254,6 +261,7 @@
             this.BTNAddCustomer.TabIndex = 3;
             this.BTNAddCustomer.Text = "Add Customer";
             this.BTNAddCustomer.UseVisualStyleBackColor = true;
+            this.BTNAddCustomer.Click += new System.EventHandler(this.BTNAddCustomer_Click);
             // 
             // BTNDeleteCustomer
             // 
@@ -263,6 +271,7 @@
             this.BTNDeleteCustomer.TabIndex = 4;
             this.BTNDeleteCustomer.Text = "Delete Customer";
             this.BTNDeleteCustomer.UseVisualStyleBackColor = true;
+            this.BTNDeleteCustomer.Click += new System.EventHandler(this.BTNDeleteCustomer_Click);
             // 
             // BTNUpdateCustomer
             // 
@@ -272,6 +281,7 @@
             this.BTNUpdateCustomer.TabIndex = 5;
             this.BTNUpdateCustomer.Text = "Update Customer";
             this.BTNUpdateCustomer.UseVisualStyleBackColor = true;
+            this.BTNUpdateCustomer.Click += new System.EventHandler(this.BTNUpdateCustomer_Click);
             // 
             // panel2
             // 
@@ -451,17 +461,48 @@
             // 
             // txbCustID
             // 
-            this.txbCustID.Location = new System.Drawing.Point(1126, 811);
+            this.txbCustID.Location = new System.Drawing.Point(1117, 825);
             this.txbCustID.Name = "txbCustID";
             this.txbCustID.Size = new System.Drawing.Size(134, 22);
             this.txbCustID.TabIndex = 25;
             // 
             // txbMovieID
             // 
-            this.txbMovieID.Location = new System.Drawing.Point(1390, 811);
+            this.txbMovieID.Location = new System.Drawing.Point(1295, 825);
             this.txbMovieID.Name = "txbMovieID";
             this.txbMovieID.Size = new System.Drawing.Size(134, 22);
             this.txbMovieID.TabIndex = 26;
+            // 
+            // txbReturnMovieID
+            // 
+            this.txbReturnMovieID.Location = new System.Drawing.Point(1454, 825);
+            this.txbReturnMovieID.Name = "txbReturnMovieID";
+            this.txbReturnMovieID.Size = new System.Drawing.Size(134, 22);
+            this.txbReturnMovieID.TabIndex = 27;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(1451, 799);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 23);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Return Movie ID";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(1292, 799);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(137, 23);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Movie ID";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(1114, 799);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 23);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Customer ID";
             // 
             // Form1
             // 
@@ -469,6 +510,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1875, 913);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txbReturnMovieID);
             this.Controls.Add(this.txbMovieID);
             this.Controls.Add(this.txbCustID);
             this.Controls.Add(this.BTNIssueMovie);
@@ -544,6 +589,10 @@
         private System.Windows.Forms.TextBox txbIssuedDate;
         private System.Windows.Forms.TextBox txbCustID;
         private System.Windows.Forms.TextBox txbMovieID;
+        private System.Windows.Forms.TextBox txbReturnMovieID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
