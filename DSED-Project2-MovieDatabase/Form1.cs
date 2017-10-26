@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,28 +11,33 @@ using System.Windows.Forms;
 
 namespace DSED_Project2_MovieDatabase
 {
+    //To Do list for project 
     #region ToDo List / Complete 
 
-    //todo Insert Update and Delete entires in Database
+    //Insert Update and Delete entires in Database - Complete
     //Show All Videos - Complete
     //Show Moives not returned - Complete
     //Use a Database Class - Complete
-    //todo Issue Movies - Issue Complete 
-    //todo Return Movie - Complete
+    //Issue Movies - Issue Complete 
+    //Return Movie - Complete
     //List who are top customers - Complete
     //List what are top movies - Complete
-    //todo 2x Unit Tests
+    //todo 2x Unit Tests - Not Complete
     //1 Procedure - ( Check with Gary ) - Not required - Not enough time to learn b4 Project Started ( will be covered at a later date )
     //At least 1 Veiw - Complete
     //Display Database Details on Form - Customer / Movie / Rentals - Complete
     //Host on GitHub - Complete
-
+    //Comments need to be clear and explainable - Complete
     #endregion
 
 
     public partial class Form1 : Form
     {
+        //Create values for myDatabase
+
         Database myDatabase = new Database();
+
+        //Initilizing the application, and getting todays date
         public Form1()
         {
             InitializeComponent();
@@ -39,6 +45,7 @@ namespace DSED_Project2_MovieDatabase
             LoadDB();
         }
 
+        //Method for Loading the DataBase ( LoadDB )
         public void LoadDB()
         {
             DisplayDataGridViewCustomer();
@@ -50,6 +57,7 @@ namespace DSED_Project2_MovieDatabase
 
         }
 
+        //Method to clear text boxes  
         public void ClearTextBoxes()
         {
             txbTitle.Text = string.Empty;
@@ -66,7 +74,7 @@ namespace DSED_Project2_MovieDatabase
 
         }
 
-
+        //Display Customer details in DataGrid Veiw 
         #region Tab Customer
 
         private void DisplayDataGridViewCustomer()
@@ -85,6 +93,7 @@ namespace DSED_Project2_MovieDatabase
 
         #endregion
 
+        //Display Movies details in DataGrid Veiw 
         #region Tab Movies
 
         private void DisplayDataGridViewMovies()
@@ -104,6 +113,7 @@ namespace DSED_Project2_MovieDatabase
         }
         #endregion
 
+        //Display Rentals details in DataGrid Veiw 
         #region Tab Rentals
         private void DisplayDataGridViewRentals()
         {
@@ -123,6 +133,7 @@ namespace DSED_Project2_MovieDatabase
 
         #endregion
 
+        //Display Movies not Returned details in DataGrid Veiw 
         #region Tab Movies Not Returned
         private void DisplayDataGridViewMoviesNOtReturned()
         {
@@ -141,6 +152,7 @@ namespace DSED_Project2_MovieDatabase
         }
         #endregion
 
+        //Display Top Customer View details in DataGrid Veiw 
         #region Tab TopCustomerView
         private void DisplayDataGridViewTopCustomerView()
         {
@@ -160,6 +172,7 @@ namespace DSED_Project2_MovieDatabase
 
         #endregion
 
+        //Display Top Movie View details in DataGrid View
         #region Tab TopMovieView
         private void DisplayDataGridViewTopMovieView()
         {
@@ -182,6 +195,7 @@ namespace DSED_Project2_MovieDatabase
 
         #endregion
 
+        //Place customer details from Data Grid into Customer Details section of the Form
         #region Customer Database Details to Form
 
         private void DGVCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -206,6 +220,7 @@ namespace DSED_Project2_MovieDatabase
 
         #endregion
 
+        //Place movie details from Data Grid into the Movie Deatils section of the Form
         #region Movie Database View Details to Form
         private void DGVMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -229,15 +244,18 @@ namespace DSED_Project2_MovieDatabase
         }
         #endregion
 
+        //Place rental details from Data Grid into both Customer and Movie Deatils section of the Form
         #region Rental Database View Details to Form
 
         private void DGVRentals_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
             string RMID;
             ClearTextBoxes();
 
             try
             {
+                
                 RMID = DGVRentals.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txbFirstName.Text = DGVRentals.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txbSurname.Text = DGVRentals.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -246,8 +264,9 @@ namespace DSED_Project2_MovieDatabase
                 txbIssuedDate.Text = DGVRentals.Rows[e.RowIndex].Cells[6].Value.ToString();
                 txbReturnMovieID.Text = RMID;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                Console.WriteLine(exception);
                 throw;
             }
 
@@ -256,6 +275,7 @@ namespace DSED_Project2_MovieDatabase
 
         #endregion
 
+        //Button Click action to Issue a movie to a customer ( Select a Customer, then Select a Movie)
         #region Issue Movie
 
      
@@ -268,6 +288,7 @@ namespace DSED_Project2_MovieDatabase
         }
         #endregion
 
+        //Button Click action to return a movie from a customer ( Click on Rentals and select a movie that has not been returned - then click on Return Movie)
         #region Return Movie
         private void BTNReturnMovie_Click(object sender, EventArgs e)
         {
@@ -280,6 +301,9 @@ namespace DSED_Project2_MovieDatabase
 
         #endregion
 
+        //Button CLick action when modifying customer details in the Customer Details form
+        //(Update Name, Address, Phone Number)
+        //Success messages for Add / Update and Delete of customer details
         #region Update Customer Details
 
         private void BTNAddCustomer_Click(object sender, EventArgs e)
@@ -303,6 +327,8 @@ namespace DSED_Project2_MovieDatabase
             LoadDB();
         }
         #endregion
+
+
     }
 
 

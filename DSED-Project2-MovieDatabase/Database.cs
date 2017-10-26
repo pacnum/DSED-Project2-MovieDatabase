@@ -6,9 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DSED_Project2_MovieDatabase
 {
-    class Database
+    //Connection to the MOVIE  database – Setup SQL Connections, Command and DataAdaptor
+    public class Database
     {
         private SqlConnection Connection = new SqlConnection();
         private SqlCommand Command = new SqlCommand();
@@ -24,6 +26,8 @@ namespace DSED_Project2_MovieDatabase
             Command.Connection = Connection;
         }
 
+
+        //Connect to the Customer table in the database, and then fill the DataGridView table – Customer with these details
         public DataTable FillDGVCustomerWithCustomer()
         {
             DataTable dt = new DataTable();
@@ -36,6 +40,7 @@ namespace DSED_Project2_MovieDatabase
             return dt;
         }
 
+        //Connect to the Movies table in the database, and then fill the DataGridView table – Movie with these details
         public DataTable FillDGVMoviesWithMovies()
         {
             DataTable dt = new DataTable();
@@ -47,6 +52,8 @@ namespace DSED_Project2_MovieDatabase
             }
             return dt;
         }
+
+        //Connect to the CustomerandMoviesRented view in the database, and then fill the DataGridView table – Rentals with these details
 
         public DataTable FillDGVRentalsWithCustomerAndMoviesRented()
         {
@@ -60,6 +67,7 @@ namespace DSED_Project2_MovieDatabase
             return dt;
         }
 
+        //Connect to the MoviesReturned view in the database, and then fill the DataGridView table – Movies Not Returned with these details
         public DataTable FillDGVNotReturnedwithMovieReturned()
         {
             DataTable dt = new DataTable();
@@ -71,6 +79,8 @@ namespace DSED_Project2_MovieDatabase
             }
             return dt;
         }
+
+        //Connect to the TopCustomerView view in the database, and then fill the DataGridView table – Top Customers with these details
 
         public DataTable FillDGVTopCustomerswithTopCustomerView()
         {
@@ -84,6 +94,8 @@ namespace DSED_Project2_MovieDatabase
             return dt;
         }
 
+        //Connect to the TopMovieView view in the database, and then fill the DataGridView table – Top Movies with these details
+
         public DataTable FillDGVTopMovieswithTopMovieView()
         {
             DataTable dt = new DataTable();
@@ -95,6 +107,9 @@ namespace DSED_Project2_MovieDatabase
             }
             return dt;
         }
+
+
+        //Connect to the Movies database and INSERT INTO the RentedMovies table values for issuing a movie to a customer
 
         public object IssueMovie(string MovieID, string CustID)
         {
@@ -117,6 +132,8 @@ namespace DSED_Project2_MovieDatabase
 
         }
 
+        //Connect to the Movies database and UPDATE the RentedMovies table values for returning  a movie from a customer
+
         public void ReturnMovie(string ID)
         {
             System.DateTime today = System.DateTime.Now;
@@ -133,6 +150,8 @@ namespace DSED_Project2_MovieDatabase
             Connection.Close();
         }
 
+
+        //Connect to the Movies database and INSERT INTO ( modify ) the table values for customers in order to change their details, such as phone number, address, or name. 
 
         public string InsertOrUpdateOwner(string FirstName, String LastName, string Address, string Phone, string ID, string AddorUpdate)
         {
@@ -176,6 +195,8 @@ namespace DSED_Project2_MovieDatabase
             }
         }
 
+        //Connect to the Movies database and DELETE FROM the table values for the customer – to remove/delete them from the database
+
         public string DeleteCustomer(string ID)
         {
             var myCommand = new SqlCommand("DELETE FROM Customer WHERE CustID =@ID", Connection);
@@ -186,6 +207,28 @@ namespace DSED_Project2_MovieDatabase
             Connection.Close();
             return "Success";
 
+        }
+
+        //For Unit testing
+
+        public int SelectAllCustomers()
+        {
+            var myCommand = new SqlCommand("SELECT * FROM Customer");
+            myCommand.Connection = Connection;
+            Connection.Open();
+            int row = myCommand.ExecuteNonQuery();
+            Connection.Close();
+            return row;
+        }
+
+        public int SelectAllMovies()
+        {
+            var myCommand = new SqlCommand("SELECT * FROM MOVIES");
+            myCommand.Connection = Connection;
+            Connection.Open();
+            int row = myCommand.ExecuteNonQuery();
+            Connection.Close();
+            return row;
         }
     }
 

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSED-Project2-MovieDatabase", "DSED-Project2-MovieDatabase\DSED-Project2-MovieDatabase.csproj", "{880C3DD5-F2F4-44C8-8447-3875597E64DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMovieDatabase", "UnitTestMovieDatabase\UnitTestMovieDatabase.csproj", "{D6CC135B-745E-42DA-AA02-04DC4CB2CE06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{880C3DD5-F2F4-44C8-8447-3875597E64DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{880C3DD5-F2F4-44C8-8447-3875597E64DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{880C3DD5-F2F4-44C8-8447-3875597E64DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6CC135B-745E-42DA-AA02-04DC4CB2CE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6CC135B-745E-42DA-AA02-04DC4CB2CE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6CC135B-745E-42DA-AA02-04DC4CB2CE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6CC135B-745E-42DA-AA02-04DC4CB2CE06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
