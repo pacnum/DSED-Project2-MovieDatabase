@@ -26,7 +26,7 @@ namespace DSED_Project2_MovieDatabase
     //1 Procedure - ( Check with Gary ) - Not required - Not enough time to learn b4 Project Started ( will be covered at a later date )
     //At least 1 Veiw - Complete
     //Display Database Details on Form - Customer / Movie / Rentals - Complete
-    //Host on GitHub - Complete - Added SQL allow in GitHub
+    //Host on GitHub - Complete - Added SQL allow in GitHub 
     //Comments need to be clear and explainable - Complete
     #endregion
 
